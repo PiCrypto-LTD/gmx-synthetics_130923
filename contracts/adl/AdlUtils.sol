@@ -1,16 +1,41 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
+import "./../order/OrderStoreUtils.sol";
+import "./../order/OrderEventUtils.sol";
+import "./../position/PositionUtils.sol";
+import "./../position/PositionStoreUtils.sol";
+import "./../nonce/NonceUtils.sol";
+import "./../callback/CallbackUtils.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../utils/Array.sol";
+import "./../market/Market.sol";
+import "./../position/Position.sol";
+import "./../event/EventUtils.sol";
+import "./../oracle/Oracle.sol";
+import "./../error/Errors.sol";
+import "./../market/MarketUtils.sol";
+import "./../data/Keys.sol";
+import "./../chain/Chain.sol";
+import "./../order/Order.sol";
+import "./../utils/Cast.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\AdlUtils
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../data/DataStore.sol";
-import "../event/EventEmitter.sol";
 
-import "../order/OrderStoreUtils.sol";
-import "../order/OrderEventUtils.sol";
-import "../position/PositionUtils.sol";
-import "../position/PositionStoreUtils.sol";
-import "../nonce/NonceUtils.sol";
-import "../callback/CallbackUtils.sol";
+
+//import "../data/DataStore.sol";
+//import "../event/EventEmitter.sol";
+
+//import "../order/OrderStoreUtils.sol";
+//import "../order/OrderEventUtils.sol";
+//import "../position/PositionUtils.sol";
+//import "../position/PositionStoreUtils.sol";
+//import "../nonce/NonceUtils.sol";
+//import "../callback/CallbackUtils.sol";
 
 // @title AdlUtils
 // @dev Library to help with auto-deleveraging

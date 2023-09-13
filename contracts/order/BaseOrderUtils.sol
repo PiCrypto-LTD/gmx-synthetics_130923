@@ -1,18 +1,35 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
 import "./Order.sol";
-import "../market/Market.sol";
+import "./../market/Market.sol";
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
+import "./../referral/IReferralStorage.sol";
+import "./OrderVault.sol";
+import "./../oracle/Oracle.sol";
+import "./../swap/SwapHandler.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../price/Price.sol";
+import "./../error/Errors.sol";
+import "./../utils/Precision.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\BaseOrderUtils
+//SPDX-License-Identifier: None
 
-import "../data/DataStore.sol";
-import "../event/EventEmitter.sol";
-import "../referral/IReferralStorage.sol";
 
-import "../order/OrderVault.sol";
 
-import "../oracle/Oracle.sol";
-import "../swap/SwapHandler.sol";
+
+//import "./Order.sol";
+//import "../market/Market.sol";
+
+//import "../data/DataStore.sol";
+//import "../event/EventEmitter.sol";
+//import "../referral/IReferralStorage.sol";
+
+//import "../order/OrderVault.sol";
+
+//import "../oracle/Oracle.sol";
+//import "../swap/SwapHandler.sol";
 
 // @title Order
 // @dev Library for common order functions used in OrderUtils, IncreaseOrderUtils

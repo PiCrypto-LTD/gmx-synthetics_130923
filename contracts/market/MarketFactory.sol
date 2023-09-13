@@ -1,12 +1,27 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
 import "./MarketToken.sol";
 import "./Market.sol";
 import "./MarketStoreUtils.sol";
-import "../event/EventEmitter.sol";
-import "../utils/Cast.sol";
+import "./../event/EventEmitter.sol";
+import "./../utils/Cast.sol";
+import "./../role/RoleModule.sol";
+import "./../event/EventUtils.sol";
+import "./../data/DataStore.sol";
+import "./../role/RoleStore.sol";
+import "./../error/Errors.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xf5F30B10141E1F63FC11eD772931A8294a591996#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\MarketFactory\MarketFactory
+//SPDX-License-Identifier: None
+
+
+
+
+//import "./MarketToken.sol";
+//import "./Market.sol";
+//import "./MarketStoreUtils.sol";
+//import "../event/EventEmitter.sol";
+//import "../utils/Cast.sol";
 
 // @title MarketFactory
 // @dev Contract to create markets

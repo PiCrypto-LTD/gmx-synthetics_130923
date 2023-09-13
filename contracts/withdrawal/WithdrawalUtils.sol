@@ -1,25 +1,61 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../adl/AdlUtils.sol";
-
-import "../data/DataStore.sol";
-
+import "./../adl/AdlUtils.sol";
+import "./../data/DataStore.sol";
 import "./WithdrawalVault.sol";
 import "./WithdrawalStoreUtils.sol";
 import "./WithdrawalEventUtils.sol";
+import "./../nonce/NonceUtils.sol";
+import "./../pricing/SwapPricingUtils.sol";
+import "./../oracle/Oracle.sol";
+import "./../oracle/OracleUtils.sol";
+import "./../gas/GasUtils.sol";
+import "./../callback/CallbackUtils.sol";
+import "./../utils/Array.sol";
+import "./../utils/AccountUtils.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../price/Price.sol";
+import "./Withdrawal.sol";
+import "./../event/EventUtils.sol";
+import "./../event/EventEmitter.sol";
+import "./../market/Market.sol";
+import "./../swap/SwapUtils.sol";
+import "./../token/TokenUtils.sol";
+import "./../error/Errors.sol";
+import "./../market/MarketUtils.sol";
+import "./../chain/Chain.sol";
+import "./../market/MarketToken.sol";
+import "./../fee/FeeUtils.sol";
+import "./../data/Keys.sol";
+import "./../bank/Bank.sol";
+import "./../market/MarketPoolValueInfo.sol";
+import "./../market/MarketEventUtils.sol";
+import "./../utils/Precision.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x3B070aA6847bd0fB56eFAdB351f49BBb7619dbc2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\ExchangeRouter\WithdrawalUtils
+//SPDX-License-Identifier: None
 
-import "../nonce/NonceUtils.sol";
-import "../pricing/SwapPricingUtils.sol";
-import "../oracle/Oracle.sol";
-import "../oracle/OracleUtils.sol";
 
-import "../gas/GasUtils.sol";
-import "../callback/CallbackUtils.sol";
 
-import "../utils/Array.sol";
-import "../utils/AccountUtils.sol";
+
+//import "../adl/AdlUtils.sol";
+
+//import "../data/DataStore.sol";
+
+//import "./WithdrawalVault.sol";
+//import "./WithdrawalStoreUtils.sol";
+//import "./WithdrawalEventUtils.sol";
+
+//import "../nonce/NonceUtils.sol";
+//import "../pricing/SwapPricingUtils.sol";
+//import "../oracle/Oracle.sol";
+//import "../oracle/OracleUtils.sol";
+
+//import "../gas/GasUtils.sol";
+//import "../callback/CallbackUtils.sol";
+
+//import "../utils/Array.sol";
+//import "../utils/AccountUtils.sol";
 
 /**
  * @title WithdrawalUtils

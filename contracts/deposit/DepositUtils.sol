@@ -1,19 +1,42 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../data/DataStore.sol";
-import "../event/EventEmitter.sol";
-
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
 import "./DepositVault.sol";
 import "./DepositStoreUtils.sol";
 import "./DepositEventUtils.sol";
+import "./../nonce/NonceUtils.sol";
+import "./../gas/GasUtils.sol";
+import "./../callback/CallbackUtils.sol";
+import "./../utils/AccountUtils.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../price/Price.sol";
+import "./Deposit.sol";
+import "./../market/Market.sol";
+import "./../market/MarketUtils.sol";
+import "./../token/TokenUtils.sol";
+import "./../error/Errors.sol";
+import "./../chain/Chain.sol";
+import "./../event/EventUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xD9AebEA68DE4b4A3B58833e1bc2AEB9682883AB0#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\DepositHandler\DepositUtils
+//SPDX-License-Identifier: None
 
-import "../nonce/NonceUtils.sol";
 
-import "../gas/GasUtils.sol";
-import "../callback/CallbackUtils.sol";
-import "../utils/AccountUtils.sol";
+
+
+//import "../data/DataStore.sol";
+//import "../event/EventEmitter.sol";
+
+//import "./DepositVault.sol";
+//import "./DepositStoreUtils.sol";
+//import "./DepositEventUtils.sol";
+
+//import "../nonce/NonceUtils.sol";
+
+//import "../gas/GasUtils.sol";
+//import "../callback/CallbackUtils.sol";
+//import "../utils/AccountUtils.sol";
 
 // @title DepositUtils
 // @dev Library for deposit functions, to help with the depositing of liquidity

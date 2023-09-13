@@ -1,12 +1,21 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../prb-math/PRBMathUD60x18.sol";
+import "./../utils/Calc.sol";
+import "./../utils/Precision.sol";
+import "./../market/MarketUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\PricingUtils
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "prb-math/contracts/PRBMathUD60x18.sol";
 
-import "../utils/Calc.sol";
-import "../utils/Precision.sol";
-import "../market/MarketUtils.sol";
+
+//import "prb-math/contracts/PRBMathUD60x18.sol";
+
+//import "../utils/Calc.sol";
+//import "../utils/Precision.sol";
+//import "../market/MarketUtils.sol";
 
 // @title PricingUtils
 // @dev Library for pricing functions

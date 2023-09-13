@@ -1,10 +1,23 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
 import "./BaseOrderUtils.sol";
-import "../swap/SwapUtils.sol";
-import "../order/OrderStoreUtils.sol";
+import "./../swap/SwapUtils.sol";
+import "./OrderStoreUtils.sol";
+import "./Order.sol";
+import "./../utils/Array.sol";
+import "./../event/EventUtils.sol";
+import "./../error/Errors.sol";
+import "./../oracle/OracleUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\SwapOrderUtils
+//SPDX-License-Identifier: None
+
+
+
+
+//import "./BaseOrderUtils.sol";
+//import "../swap/SwapUtils.sol";
+//import "../order/OrderStoreUtils.sol";
 
 // @title SwapOrderUtils
 // @dev Library for functions to help with processing a swap order

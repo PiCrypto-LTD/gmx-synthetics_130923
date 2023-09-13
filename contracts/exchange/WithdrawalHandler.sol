@@ -1,25 +1,51 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../utils/GlobalReentrancyGuard.sol";
-import "../error/ErrorUtils.sol";
-
+import "./../utils/GlobalReentrancyGuard.sol";
+import "./../error/ErrorUtils.sol";
 import "./ExchangeUtils.sol";
-import "../role/RoleModule.sol";
-import "../feature/FeatureUtils.sol";
-
-import "../market/Market.sol";
-import "../market/MarketToken.sol";
-
-import "../withdrawal/Withdrawal.sol";
-import "../withdrawal/WithdrawalVault.sol";
-import "../withdrawal/WithdrawalStoreUtils.sol";
-import "../withdrawal/WithdrawalUtils.sol";
-import "../oracle/Oracle.sol";
-import "../oracle/OracleModule.sol";
-
+import "./../role/RoleModule.sol";
+import "./../feature/FeatureUtils.sol";
+import "./../market/Market.sol";
+import "./../market/MarketToken.sol";
+import "./../withdrawal/Withdrawal.sol";
+import "./../withdrawal/WithdrawalVault.sol";
+import "./../withdrawal/WithdrawalStoreUtils.sol";
+import "./../withdrawal/WithdrawalUtils.sol";
+import "./../oracle/Oracle.sol";
+import "./../oracle/OracleModule.sol";
 import "./IWithdrawalHandler.sol";
+import "./../event/EventEmitter.sol";
+import "./../role/RoleStore.sol";
+import "./../data/DataStore.sol";
+import "./../data/Keys.sol";
+import "./../oracle/OracleUtils.sol";
+import "./../gas/GasUtils.sol";
+import "./../error/Errors.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x79B99855676dB97e488F33CF52DaCF552102A950#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\WithdrawalHandler\WithdrawalHandler
+//SPDX-License-Identifier: None
+
+
+
+
+//import "../utils/GlobalReentrancyGuard.sol";
+//import "../error/ErrorUtils.sol";
+
+//import "./ExchangeUtils.sol";
+//import "../role/RoleModule.sol";
+//import "../feature/FeatureUtils.sol";
+
+//import "../market/Market.sol";
+//import "../market/MarketToken.sol";
+
+//import "../withdrawal/Withdrawal.sol";
+//import "../withdrawal/WithdrawalVault.sol";
+//import "../withdrawal/WithdrawalStoreUtils.sol";
+//import "../withdrawal/WithdrawalUtils.sol";
+//import "../oracle/Oracle.sol";
+//import "../oracle/OracleModule.sol";
+
+//import "./IWithdrawalHandler.sol";
 
 // @title WithdrawalHandler
 // @dev Contract to handle creation, execution and cancellation of withdrawals
@@ -97,6 +123,7 @@ contract WithdrawalHandler is IWithdrawalHandler, GlobalReentrancyGuard, RoleMod
     )
         external
         globalNonReentrant
+        // @audit-issue only specific address can execute this, currently these addresses are executed by offchain code
         onlyOrderKeeper
         withOraclePrices(oracle, dataStore, eventEmitter, oracleParams)
     {

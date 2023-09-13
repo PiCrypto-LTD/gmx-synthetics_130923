@@ -1,11 +1,23 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../role/RoleModule.sol";
+import "./../event/EventEmitter.sol";
+import "./../event/EventUtils.sol";
+import "./../utils/Cast.sol";
+import "./../openzeppelin/utils/structs/EnumerableSet.sol";
+import "./../utils/EnumerableValues.sol";
+import "./../role/RoleStore.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\OracleStore
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../role/RoleModule.sol";
-import "../event/EventEmitter.sol";
-import "../event/EventUtils.sol";
-import "../utils/Cast.sol";
+
+
+//import "../role/RoleModule.sol";
+//import "../event/EventEmitter.sol";
+//import "../event/EventUtils.sol";
+//import "../utils/Cast.sol";
 
 // @title OracleStore
 // @dev Stores the list of oracle signers

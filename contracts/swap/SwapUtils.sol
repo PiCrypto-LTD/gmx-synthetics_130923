@@ -1,14 +1,35 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../adl/AdlUtils.sol";
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
+import "./../oracle/Oracle.sol";
+import "./../pricing/SwapPricingUtils.sol";
+import "./../token/TokenUtils.sol";
+import "./../fee/FeeUtils.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../price/Price.sol";
+import "./../event/EventUtils.sol";
+import "./../bank/Bank.sol";
+import "./../market/Market.sol";
+import "./../error/Errors.sol";
+import "./../data/Keys.sol";
+import "./../market/MarketUtils.sol";
+import "./../market/MarketToken.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\SwapUtils
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../adl/AdlUtils.sol";
-import "../data/DataStore.sol";
-import "../event/EventEmitter.sol";
-import "../oracle/Oracle.sol";
-import "../pricing/SwapPricingUtils.sol";
-import "../token/TokenUtils.sol";
-import "../fee/FeeUtils.sol";
+
+
+//import "../adl/AdlUtils.sol";
+//import "../data/DataStore.sol";
+//import "../event/EventEmitter.sol";
+//import "../oracle/Oracle.sol";
+//import "../pricing/SwapPricingUtils.sol";
+//import "../token/TokenUtils.sol";
+//import "../fee/FeeUtils.sol";
 
 /**
  * @title SwapUtils

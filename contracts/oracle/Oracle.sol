@@ -1,28 +1,54 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
-import "@openzeppelin/contracts/utils/math/SafeCast.sol";
-
-import "../role/RoleModule.sol";
-
+import "./../openzeppelin/utils/structs/EnumerableSet.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../role/RoleModule.sol";
 import "./OracleStore.sol";
 import "./OracleUtils.sol";
 import "./IPriceFeed.sol";
-import "../price/Price.sol";
+import "./../price/Price.sol";
+import "./../chain/Chain.sol";
+import "./../data/DataStore.sol";
+import "./../data/Keys.sol";
+import "./../event/EventEmitter.sol";
+import "./../event/EventUtils.sol";
+import "./../utils/Bits.sol";
+import "./../utils/Array.sol";
+import "./../utils/Precision.sol";
+import "./../utils/Cast.sol";
+import "./../utils/Uint256Mask.sol";
+import "./../utils/EnumerableValues.sol";
+import "./../role/RoleStore.sol";
+import "./../error/Errors.sol";
+import "./../utils/Calc.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\Oracle
+//SPDX-License-Identifier: None
 
-import "../chain/Chain.sol";
-import "../data/DataStore.sol";
-import "../data/Keys.sol";
-import "../event/EventEmitter.sol";
-import "../event/EventUtils.sol";
 
-import "../utils/Bits.sol";
-import "../utils/Array.sol";
-import "../utils/Precision.sol";
-import "../utils/Cast.sol";
-import "../utils/Uint256Mask.sol";
+
+
+//import "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+//import "@openzeppelin/contracts/utils/math/SafeCast.sol";
+
+//import "../role/RoleModule.sol";
+
+//import "./OracleStore.sol";
+//import "./OracleUtils.sol";
+//import "./IPriceFeed.sol";
+//import "../price/Price.sol";
+
+//import "../chain/Chain.sol";
+//import "../data/DataStore.sol";
+//import "../data/Keys.sol";
+//import "../event/EventEmitter.sol";
+//import "../event/EventUtils.sol";
+
+//import "../utils/Bits.sol";
+//import "../utils/Array.sol";
+//import "../utils/Precision.sol";
+//import "../utils/Cast.sol";
+//import "../utils/Uint256Mask.sol";
 
 // @title Oracle
 // @dev Contract to validate and store signed values

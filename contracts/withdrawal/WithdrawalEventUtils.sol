@@ -1,12 +1,21 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../event/EventEmitter.sol";
-import "../event/EventUtils.sol";
-import "../utils/Cast.sol";
-
+import "./../event/EventEmitter.sol";
+import "./../event/EventUtils.sol";
+import "./../utils/Cast.sol";
 import "./Withdrawal.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x3B070aA6847bd0fB56eFAdB351f49BBb7619dbc2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\ExchangeRouter\WithdrawalEventUtils
+//SPDX-License-Identifier: None
+
+
+
+
+//import "../event/EventEmitter.sol";
+//import "../event/EventUtils.sol";
+//import "../utils/Cast.sol";
+
+//import "./Withdrawal.sol";
 
 library WithdrawalEventUtils {
     using Withdrawal for Withdrawal.Props;

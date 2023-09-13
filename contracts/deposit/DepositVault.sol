@@ -1,8 +1,16 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../bank/StrictBank.sol";
+import "./../role/RoleStore.sol";
+import "./../data/DataStore.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xD9AebEA68DE4b4A3B58833e1bc2AEB9682883AB0#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\DepositHandler\DepositVault
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../bank/StrictBank.sol";
+
+
+//import "../bank/StrictBank.sol";
 
 // @title DepositVault
 // @dev Vault for deposits

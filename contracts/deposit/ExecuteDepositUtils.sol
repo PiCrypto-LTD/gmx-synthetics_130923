@@ -1,25 +1,57 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../adl/AdlUtils.sol";
-
-import "../data/DataStore.sol";
-import "../event/EventEmitter.sol";
-
+import "./../adl/AdlUtils.sol";
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
 import "./DepositVault.sol";
 import "./DepositStoreUtils.sol";
 import "./DepositEventUtils.sol";
+import "./../pricing/SwapPricingUtils.sol";
+import "./../oracle/Oracle.sol";
+import "./../oracle/OracleUtils.sol";
+import "./../gas/GasUtils.sol";
+import "./../callback/CallbackUtils.sol";
+import "./../utils/Array.sol";
+import "./../error/ErrorUtils.sol";
+import "./../openzeppelin/utils/math/SafeCast.sol";
+import "./../price/Price.sol";
+import "./Deposit.sol";
+import "./../event/EventUtils.sol";
+import "./../market/Market.sol";
+import "./../error/Errors.sol";
+import "./../market/MarketUtils.sol";
+import "./../data/Keys.sol";
+import "./../utils/Precision.sol";
+import "./../fee/FeeUtils.sol";
+import "./../market/MarketPoolValueInfo.sol";
+import "./../market/MarketToken.sol";
+import "./../market/MarketEventUtils.sol";
+import "./../swap/SwapUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xD9AebEA68DE4b4A3B58833e1bc2AEB9682883AB0#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\DepositHandler\ExecuteDepositUtils
+//SPDX-License-Identifier: None
 
-import "../pricing/SwapPricingUtils.sol";
-import "../oracle/Oracle.sol";
-import "../oracle/OracleUtils.sol";
 
-import "../gas/GasUtils.sol";
-import "../callback/CallbackUtils.sol";
 
-import "../utils/Array.sol";
-import "../error/ErrorUtils.sol";
+
+//import "../adl/AdlUtils.sol";
+
+//import "../data/DataStore.sol";
+//import "../event/EventEmitter.sol";
+
+//import "./DepositVault.sol";
+//import "./DepositStoreUtils.sol";
+//import "./DepositEventUtils.sol";
+
+//import "../pricing/SwapPricingUtils.sol";
+//import "../oracle/Oracle.sol";
+//import "../oracle/OracleUtils.sol";
+
+//import "../gas/GasUtils.sol";
+//import "../callback/CallbackUtils.sol";
+
+//import "../utils/Array.sol";
+//import "../error/ErrorUtils.sol";
 
 // @title DepositUtils
 // @dev Library for deposit functions, to help with the depositing of liquidity
@@ -106,6 +138,8 @@ library ExecuteDepositUtils {
         params.startingGas -= gasleft() / 63;
 
         Deposit.Props memory deposit = DepositStoreUtils.get(params.dataStore, params.key);
+        // @audit-check is there a situation where the transaction would not be executed but would not revert??
+        // @audit=check can someone/admin run Datastore.removeXXX?
         DepositStoreUtils.remove(params.dataStore, params.key, deposit.account());
 
         ExecuteDepositCache memory cache;
@@ -113,13 +147,13 @@ library ExecuteDepositUtils {
         if (deposit.account() == address(0)) {
             revert Errors.EmptyDeposit();
         }
-
+        // @audit-check who sets the min/nax block numbers
         OracleUtils.validateBlockNumberWithinRange(
             params.minOracleBlockNumbers,
             params.maxOracleBlockNumbers,
             deposit.updatedAtBlock()
         );
-
+        // @audit-check who sets the min/nax block numbers
         Market.Props memory market = MarketUtils.getEnabledMarket(params.dataStore, deposit.market());
 
         MarketUtils.MarketPrices memory prices = MarketUtils.getMarketPrices(params.oracle, market);

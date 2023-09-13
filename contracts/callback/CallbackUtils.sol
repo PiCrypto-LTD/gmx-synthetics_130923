@@ -1,16 +1,33 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/utils/Address.sol";
-
-import "../data/DataStore.sol";
-import "../data/Keys.sol";
-import "../error/ErrorUtils.sol";
-
+import "./../openzeppelin/utils/Address.sol";
+import "./../data/DataStore.sol";
+import "./../data/Keys.sol";
+import "./../error/ErrorUtils.sol";
 import "./IOrderCallbackReceiver.sol";
 import "./IDepositCallbackReceiver.sol";
 import "./IWithdrawalCallbackReceiver.sol";
+import "./../deposit/Deposit.sol";
+import "./../withdrawal/Withdrawal.sol";
+import "./../order/Order.sol";
+import "./../error/Errors.sol";
+import "./../event/EventUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x12CA21bd73b5887f4d2A0054Ca52510523f18c60#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\AdlHandler\CallbackUtils
+//SPDX-License-Identifier: None
+
+
+
+
+//import "@openzeppelin/contracts/utils/Address.sol";
+
+//import "../data/DataStore.sol";
+//import "../data/Keys.sol";
+//import "../error/ErrorUtils.sol";
+
+//import "./IOrderCallbackReceiver.sol";
+//import "./IDepositCallbackReceiver.sol";
+//import "./IWithdrawalCallbackReceiver.sol";
 
 // @title CallbackUtils
 // @dev most features require a two step process to complete

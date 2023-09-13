@@ -1,15 +1,30 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../openzeppelin/security/ReentrancyGuard.sol";
+import "./../data/DataStore.sol";
+import "./../data/Keys.sol";
+import "./../role/RoleModule.sol";
+import "./../event/EventEmitter.sol";
+import "./../utils/BasicMulticall.sol";
+import "./../utils/Precision.sol";
+import "./../event/EventUtils.sol";
+import "./../role/RoleStore.sol";
+import "./../error/Errors.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xf86aE903B5866bCf8723B9C3642758C87f2F3Ef2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\Config\Config
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-import "../data/DataStore.sol";
-import "../data/Keys.sol";
-import "../role/RoleModule.sol";
-import "../event/EventEmitter.sol";
-import "../utils/BasicMulticall.sol";
-import "../utils/Precision.sol";
+
+//import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+//import "../data/DataStore.sol";
+//import "../data/Keys.sol";
+//import "../role/RoleModule.sol";
+//import "../event/EventEmitter.sol";
+//import "../utils/BasicMulticall.sol";
+//import "../utils/Precision.sol";
 
 // @title Config
 contract Config is ReentrancyGuard, RoleModule, BasicMulticall {

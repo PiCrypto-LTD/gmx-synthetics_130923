@@ -1,11 +1,20 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../openzeppelin/token/ERC20/IERC20.sol";
+import "./../openzeppelin/token/ERC20/utils/SafeERC20.sol";
+import "./../role/RoleModule.sol";
+import "./../role/RoleStore.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x3B070aA6847bd0fB56eFAdB351f49BBb7619dbc2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\ExchangeRouter\Router
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import "../role/RoleModule.sol";
+
+//import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+//import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+
+//import "../role/RoleModule.sol";
 
 /**
  * @title Router

@@ -1,8 +1,14 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../error/ErrorUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x3B070aA6847bd0fB56eFAdB351f49BBb7619dbc2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\ExchangeRouter\PayableMulticall
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../error/ErrorUtils.sol";
+
+
+//import "../error/ErrorUtils.sol";
 
 /**
  * @title PayableMulticall
@@ -15,6 +21,7 @@ abstract contract PayableMulticall {
     /**
      * @dev Receives and executes a batch of function calls on this contract.
      */
+// @aduit-check what permissions does the exchange router have, in case someone uses and impersonates
     function multicall(bytes[] calldata data) external payable virtual returns (bytes[] memory results) {
         results = new bytes[](data.length);
 

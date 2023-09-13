@@ -1,21 +1,57 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
-import "../exchange/IDepositHandler.sol";
-import "../exchange/IWithdrawalHandler.sol";
-import "../exchange/IOrderHandler.sol";
-
-import "../utils/PayableMulticall.sol";
-import "../utils/AccountUtils.sol";
-
-import "../feature/FeatureUtils.sol";
-
+import "./../openzeppelin/token/ERC20/IERC20.sol";
+import "./../openzeppelin/token/ERC20/utils/SafeERC20.sol";
+import "./../openzeppelin/security/ReentrancyGuard.sol";
+import "./../exchange/IDepositHandler.sol";
+import "./../exchange/IWithdrawalHandler.sol";
+import "./../exchange/IOrderHandler.sol";
+import "./../utils/PayableMulticall.sol";
+import "./../utils/AccountUtils.sol";
+import "./../feature/FeatureUtils.sol";
 import "./Router.sol";
+import "./../role/RoleModule.sol";
+import "./../deposit/Deposit.sol";
+import "./../withdrawal/Withdrawal.sol";
+import "./../order/Order.sol";
+import "./../data/DataStore.sol";
+import "./../event/EventEmitter.sol";
+import "./../role/RoleStore.sol";
+import "./../token/TokenUtils.sol";
+import "./../deposit/DepositUtils.sol";
+import "./../deposit/DepositStoreUtils.sol";
+import "./../error/Errors.sol";
+import "./../withdrawal/WithdrawalUtils.sol";
+import "./../withdrawal/WithdrawalStoreUtils.sol";
+import "./../order/BaseOrderUtils.sol";
+import "./../callback/CallbackUtils.sol";
+import "./../oracle/OracleUtils.sol";
+import "./../order/OrderStoreUtils.sol";
+import "./../data/Keys.sol";
+import "./../market/MarketUtils.sol";
+import "./../referral/ReferralUtils.sol";
+import "./../fee/FeeUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x3B070aA6847bd0fB56eFAdB351f49BBb7619dbc2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\ExchangeRouter\ExchangeRouter
+//SPDX-License-Identifier: None
+
+
+
+
+//import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+//import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+//import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+//import "../exchange/IDepositHandler.sol";
+//import "../exchange/IWithdrawalHandler.sol";
+//import "../exchange/IOrderHandler.sol";
+
+//import "../utils/PayableMulticall.sol";
+//import "../utils/AccountUtils.sol";
+
+//import "../feature/FeatureUtils.sol";
+
+//import "./Router.sol";
 
 /**
  * @title ExchangeRouter
@@ -120,7 +156,8 @@ contract ExchangeRouter is ReentrancyGuard, PayableMulticall, RoleModule {
             params
         );
     }
-
+    // @note2tomc who can run set/alter/amend the datastore attributes and when?
+    // @note2tomc i know i said it is not necessery but a question came up when i looked at this code. if someone can cancel a deposit (not in this specific case) it means that this also needs to be maked as capital variable. and there is a need to look at the depositStoreUtils to validate who can access the deposit also who can run depositHandler.cancelDeposit
     function cancelDeposit(bytes32 key) external payable nonReentrant {
         Deposit.Props memory deposit = DepositStoreUtils.get(dataStore, key);
         if (deposit.account() == address(0)) {

@@ -1,9 +1,16 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../deposit/DepositUtils.sol";
+import "./../oracle/OracleUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xD9AebEA68DE4b4A3B58833e1bc2AEB9682883AB0#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\DepositHandler\IDepositHandler
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../deposit/DepositUtils.sol";
-import "../oracle/OracleUtils.sol";
+
+
+//import "../deposit/DepositUtils.sol";
+//import "../oracle/OracleUtils.sol";
 
 interface IDepositHandler {
     function createDeposit(address account, DepositUtils.CreateDepositParams calldata params) external returns (bytes32);

@@ -1,8 +1,14 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../error/ErrorUtils.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xf86aE903B5866bCf8723B9C3642758C87f2F3Ef2#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\Config\BasicMulticall
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "../error/ErrorUtils.sol";
+
+
+//import "../error/ErrorUtils.sol";
 
 /**
  * @title BasicMulticall

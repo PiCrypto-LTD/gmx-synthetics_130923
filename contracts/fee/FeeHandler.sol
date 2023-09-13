@@ -1,12 +1,25 @@
-// SPDX-License-Identifier: BUSL-1.1
+import "./../openzeppelin/security/ReentrancyGuard.sol";
+import "./../data/DataStore.sol";
+import "./../role/RoleModule.sol";
+import "./FeeUtils.sol";
+import "./../event/EventEmitter.sol";
+import "./../role/RoleStore.sol";
+import "./../error/Errors.sol";
+import "./../data/Keys.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0x8921e1B2FB2e2b95F1dF68A774BC523327E98E9f#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\FeeHandler\FeeHandler
+//SPDX-License-Identifier: None
 
-pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
-import "../data/DataStore.sol";
-import "../role/RoleModule.sol";
-import "../fee/FeeUtils.sol";
+
+//import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+//import "../data/DataStore.sol";
+//import "../role/RoleModule.sol";
+//import "../fee/FeeUtils.sol";
 
 // @title FeeHandler
 contract FeeHandler is ReentrancyGuard, RoleModule {

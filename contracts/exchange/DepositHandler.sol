@@ -1,25 +1,52 @@
-// SPDX-License-Identifier: BUSL-1.1
-
-pragma solidity ^0.8.0;
-
-import "../utils/GlobalReentrancyGuard.sol";
-
+import "./../utils/GlobalReentrancyGuard.sol";
 import "./ExchangeUtils.sol";
-import "../role/RoleModule.sol";
-import "../event/EventEmitter.sol";
-import "../feature/FeatureUtils.sol";
-
-import "../market/Market.sol";
-import "../market/MarketToken.sol";
-
-import "../deposit/Deposit.sol";
-import "../deposit/DepositVault.sol";
-import "../deposit/DepositUtils.sol";
-import "../deposit/ExecuteDepositUtils.sol";
-import "../oracle/Oracle.sol";
-import "../oracle/OracleModule.sol";
-
+import "./../role/RoleModule.sol";
+import "./../event/EventEmitter.sol";
+import "./../feature/FeatureUtils.sol";
+import "./../market/Market.sol";
+import "./../market/MarketToken.sol";
+import "./../deposit/Deposit.sol";
+import "./../deposit/DepositVault.sol";
+import "./../deposit/DepositUtils.sol";
+import "./../deposit/ExecuteDepositUtils.sol";
+import "./../oracle/Oracle.sol";
+import "./../oracle/OracleModule.sol";
 import "./IDepositHandler.sol";
+import "./../role/RoleStore.sol";
+import "./../data/DataStore.sol";
+import "./../data/Keys.sol";
+import "./../deposit/DepositStoreUtils.sol";
+import "./../oracle/OracleUtils.sol";
+import "./../gas/GasUtils.sol";
+import "./../error/ErrorUtils.sol";
+import "./../error/Errors.sol";
+pragma solidity 0.8.18;
+//webAddress: https://arbiscan.io/address/0xD9AebEA68DE4b4A3B58833e1bc2AEB9682883AB0#code
+//comparedWebAddress: None
+//fileName: arbitrum\GMX_V2\DepositHandler\DepositHandler
+//SPDX-License-Identifier: None
+
+
+
+
+//import "../utils/GlobalReentrancyGuard.sol";
+
+//import "./ExchangeUtils.sol";
+//import "../role/RoleModule.sol";
+//import "../event/EventEmitter.sol";
+//import "../feature/FeatureUtils.sol";
+
+//import "../market/Market.sol";
+//import "../market/MarketToken.sol";
+
+//import "../deposit/Deposit.sol";
+//import "../deposit/DepositVault.sol";
+//import "../deposit/DepositUtils.sol";
+//import "../deposit/ExecuteDepositUtils.sol";
+//import "../oracle/Oracle.sol";
+//import "../oracle/OracleModule.sol";
+
+//import "./IDepositHandler.sol";
 
 // @title DepositHandler
 // @dev Contract to handle creation, execution and cancellation of deposits
@@ -96,6 +123,7 @@ contract DepositHandler is IDepositHandler, GlobalReentrancyGuard, RoleModule, O
         OracleUtils.SetPricesParams calldata oracleParams
     ) external
         globalNonReentrant
+        // @audit-issue only specific address can execute this, currently these addresses are executed by offchain code
         onlyOrderKeeper
         withOraclePrices(oracle, dataStore, eventEmitter, oracleParams)
     {
